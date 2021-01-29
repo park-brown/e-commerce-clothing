@@ -7,8 +7,14 @@ export const Menu = () => {
 
 	return (
 		<div className='menu'>
-			{menus.map(({ title, id, imageUrl, size }) => (
-				<MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+			{menus.map(({ title, id, imageUrl, size, linkUrl }) => (
+				<MenuItem
+					key={id}
+					title={title}
+					imageUrl={imageUrl}
+					size={size}
+					linkUrl={linkUrl}
+				/>
 			))}
 		</div>
 	);
