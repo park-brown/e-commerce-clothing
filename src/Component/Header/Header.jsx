@@ -11,10 +11,13 @@ export const Header = () => {
 			</Link>
 			<div className='options'>
 				<Link to='/shop' className='option'>
-					shop
+					Shop
 				</Link>
 				<Link to='/shop' className='option'>
-					contact
+					Contact
+				</Link>
+				<Link to='/shop' className='option'>
+					Sign In
 				</Link>
 			</div>
 		</div>

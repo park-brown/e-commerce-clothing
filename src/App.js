@@ -8,6 +8,7 @@ import { SneakerPage } from './Component/SneakerPage/SneakerPage';
 import { WomenPage } from './Component/WomenPage/WomenPage';
 import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
+import { Container } from './Component/SignIn-and-SignUp-Page/Container';
 function App() {
 	return (
 		<Router>
@@ -18,7 +19,8 @@ function App() {
 				<Route exact path='/shop/men' component={MenPage} />
 				<Route exact path='/shop/sneaker' component={SneakerPage} />
 				<Route exact path='/shop/women' component={WomenPage} />
-				<Route exact path='/shop' component={ShopPage} />
+				<Route exact path='/signIN' component={ShopPage} />
+				<Route exact path='/shop' component={Container} />
 				<Route exact path='/' component={HomePage} />
 			</Switch>
 		</Router>
