@@ -6,7 +6,7 @@ import { JacketPage } from './Component/JacketPage/JacketPage';
 import { MenPage } from './Component/MenPage/MenPage';
 import { SneakerPage } from './Component/SneakerPage/SneakerPage';
 import { WomenPage } from './Component/WomenPage/WomenPage';
-
+import { ShopPage } from './Component/ShopPage/ShopPage';
 function App() {
 	return (
 		<Router>
@@ -16,6 +16,7 @@ function App() {
 				<Route exact path='/shop/men' component={MenPage} />
 				<Route exact path='/shop/sneaker' component={SneakerPage} />
 				<Route exact path='/shop/women' component={WomenPage} />
+				<Route exact path='/shop' component={ShopPage} />
 				<Route exact path='/' component={HomePage} />
 			</Switch>
 		</Router>
