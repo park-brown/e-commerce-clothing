@@ -7,9 +7,11 @@ import { MenPage } from './Component/MenPage/MenPage';
 import { SneakerPage } from './Component/SneakerPage/SneakerPage';
 import { WomenPage } from './Component/WomenPage/WomenPage';
 import { ShopPage } from './Component/ShopPage/ShopPage';
+import { Header } from './Component/Header/Header';
 function App() {
 	return (
 		<Router>
+			<Header />
 			<Switch>
 				<Route exact path='/shop/hat' component={HatPage} />
 				<Route exact path='/shop/jacket' component={JacketPage} />
