@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './Component/HomePage/HomePage';
 import { HatPage } from './Component/HatPage/HatPage';
@@ -9,18 +9,29 @@ import { WomenPage } from './Component/WomenPage/WomenPage';
 import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
+import { auth } from './fireBase/fireBase.util';
 function App() {
+	const [currentUser, setCurrentUser] = useState(null);
+
+	useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			setCurrentUser(user);
+		});
+
+		console.log(currentUser);
+	}, [currentUser]);
+
 	return (
 		<Router>
-			<Header />
+			<Header currentUser={currentUser} />
 			<Switch>
 				<Route exact path='/shop/hat' component={HatPage} />
 				<Route exact path='/shop/jacket' component={JacketPage} />
 				<Route exact path='/shop/men' component={MenPage} />
 				<Route exact path='/shop/sneaker' component={SneakerPage} />
 				<Route exact path='/shop/women' component={WomenPage} />
-				<Route exact path='/signIN' component={ShopPage} />
-				<Route exact path='/shop' component={Container} />
+				<Route exact path='/shop' component={ShopPage} />
+				<Route exact path='/signIN' component={Container} />
 				<Route exact path='/' component={HomePage} />
 			</Switch>
 		</Router>

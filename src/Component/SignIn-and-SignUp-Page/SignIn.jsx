@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormInput } from './FormInput';
 import { CustomButton } from './CustomButton';
 import './signIn.styles.scss';
+import { signInWithGoogle } from '../../fireBase/fireBase.util';
 export const SignIn = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -38,8 +39,12 @@ export const SignIn = () => {
 					handleChange={handlePasswordChange}
 					required
 				/>
-
-				<CustomButton type='submit'>Sign In</CustomButton>
+				<div className='button-group'>
+					<CustomButton type='submit'>Sign In</CustomButton>
+					<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+						Sign In With Google
+					</CustomButton>
+				</div>
 			</form>
 		</div>
 	);
