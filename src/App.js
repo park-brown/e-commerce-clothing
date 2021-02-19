@@ -9,17 +9,30 @@ import { WomenPage } from './Component/WomenPage/WomenPage';
 import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
-import { auth } from './fireBase/fireBase.util';
+import { auth, createUserProfileDocument } from './fireBase/fireBase.util.js';
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			setCurrentUser(user);
-		});
+	useEffect(
+		() => {
+			auth.onAuthStateChanged(async (user) => {
+				if (user) {
+					const userRef = await createUserProfileDocument(user);
 
-		console.log(currentUser);
-	}, [currentUser]);
+					userRef.onSnapshot((snapshot) =>
+						setCurrentUser({
+							id: snapshot.id,
+							...snapshot.data(),
+						}),
+					);
+				} else {
+					setCurrentUser(null);
+				}
+			});
+		},
+		[],
+		console.log(currentUser),
+	);
 
 	return (
 		<Router>
