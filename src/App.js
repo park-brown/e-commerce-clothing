@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './Component/HomePage/HomePage';
 import { HatPage } from './Component/HatPage/HatPage';
@@ -10,33 +10,33 @@ import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
 import { auth, createUserProfileDocument } from './fireBase/fireBase.util.js';
+import { userSignIn } from './features/userSlice';
+import { useDispatch } from 'react-redux';
 function App() {
-	const [currentUser, setCurrentUser] = useState(null);
+	const dispatch = useDispatch();
 
-	useEffect(
-		() => {
-			auth.onAuthStateChanged(async (user) => {
-				if (user) {
-					const userRef = await createUserProfileDocument(user);
+	useEffect(() => {
+		auth.onAuthStateChanged(async (user) => {
+			if (user) {
+				const userRef = await createUserProfileDocument(user);
 
-					userRef.onSnapshot((snapshot) =>
-						setCurrentUser({
+				userRef.onSnapshot((snapshot) => {
+					dispatch(
+						userSignIn({
 							id: snapshot.id,
 							...snapshot.data(),
 						}),
 					);
-				} else {
-					setCurrentUser(null);
-				}
-			});
-		},
-		[],
-		console.log(currentUser),
-	);
+				});
+			} else {
+				// dispatch(userAdded(user));
+			}
+		});
+	}, [dispatch]);
 
 	return (
 		<Router>
-			<Header currentUser={currentUser} />
+			<Header />
 			<Switch>
 				<Route exact path='/shop/hat' component={HatPage} />
 				<Route exact path='/shop/jacket' component={JacketPage} />
