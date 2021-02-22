@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import { HomePage } from './Component/HomePage/HomePage';
 import { HatPage } from './Component/HatPage/HatPage';
 import { JacketPage } from './Component/JacketPage/JacketPage';
@@ -11,9 +16,10 @@ import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
 import { auth, createUserProfileDocument } from './fireBase/fireBase.util.js';
 import { userSignIn } from './features/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 function App() {
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user);
 
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
@@ -44,7 +50,13 @@ function App() {
 				<Route exact path='/shop/sneaker' component={SneakerPage} />
 				<Route exact path='/shop/women' component={WomenPage} />
 				<Route exact path='/shop' component={ShopPage} />
-				<Route exact path='/signIN' component={Container} />
+				<Route
+					exact
+					path='/signIn'
+					render={() =>
+						user.length === 0 ? <Container /> : <Redirect to='/' />
+					}
+				/>
 				<Route exact path='/' component={HomePage} />
 			</Switch>
 		</Router>
