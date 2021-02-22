@@ -8,8 +8,8 @@ export const CardContainer = ({ title, items }) => {
 			<div className='preview'>
 				{items
 					.filter((item, index) => index < 4)
-					.map(({ id, ...otherprops }) => (
-						<Card key={id} {...otherprops} />
+					.map((item) => (
+						<Card item={item} key={item.id} />
 					))}
 			</div>
 		</div>

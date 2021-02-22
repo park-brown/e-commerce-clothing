@@ -1,5 +1,5 @@
 import React from 'react';
-import { SHOP_DATA } from './ShopData';
+import SHOP_DATA from './ShopData';
 import { CardContainer } from '../CardContainer/CardContainer';
 import './shopPage.styles.scss';
 export const ShopPage = () => {

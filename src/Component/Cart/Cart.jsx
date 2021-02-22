@@ -7,11 +7,8 @@ export const Cart = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<div className='cart-icon'>
-			<ShoppingIcon
-				className='shopping-icon'
-				onClick={() => dispatch(toggleCartDropDown())}
-			/>
+		<div className='cart-icon' onClick={() => dispatch(toggleCartDropDown())}>
+			<ShoppingIcon className='shopping-icon' />
 			<span className='item-count'>0</span>
 		</div>
 	);
