@@ -14,6 +14,7 @@ import { WomenPage } from './Component/WomenPage/WomenPage';
 import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
+import { CheckOut } from './Component/CheckOut/CheckOut';
 import { auth, createUserProfileDocument } from './fireBase/fireBase.util.js';
 import { userSignIn } from './features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,6 +51,7 @@ function App() {
 				<Route exact path='/shop/sneaker' component={SneakerPage} />
 				<Route exact path='/shop/women' component={WomenPage} />
 				<Route exact path='/shop' component={ShopPage} />
+				<Route exact path='/checkout' component={CheckOut} />
 				<Route
 					exact
 					path='/signIn'

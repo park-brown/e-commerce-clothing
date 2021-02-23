@@ -7,11 +7,11 @@ import { auth } from '../../fireBase/fireBase.util';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSignOut } from '../../features/userSlice';
 import './Header.styles.scss';
-
+import { createSelector } from '@reduxjs/toolkit';
 export const Header = () => {
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.user);
-	const isOpen = useSelector((state) => state.cart.IsOpen);
+	const user = useSelector((state) => selectUser(state));
+	const isOpen = useSelector((state) => selectCartIsOpen(state));
 
 	return (
 		<div className='header'>
@@ -43,3 +43,13 @@ export const Header = () => {
 		</div>
 	);
 };
+
+const selectUser = createSelector(
+	(state) => state.user,
+	(user) => user,
+);
+
+const selectCartIsOpen = createSelector(
+	(state) => state.cart,
+	(cart) => cart.IsOpen,
+);
