@@ -3,8 +3,9 @@ import { CartItem } from '../CartItem/CartItem';
 import { useSelector } from 'react-redux';
 import { CustomButton } from '../SignIn-and-SignUp-Page/CustomButton';
 import '../CartDropDown/CartDropDown.styles.scss';
+import { createSelector } from '@reduxjs/toolkit';
 export const CartDropDown = () => {
-	const cartItems = useSelector((state) => state.cart.cartItems);
+	const cartItems = useSelector((state) => selectCartItems(state));
 	return (
 		<div className='cart-dropdown'>
 			<div className='cart-items'>
@@ -16,3 +17,8 @@ export const CartDropDown = () => {
 		</div>
 	);
 };
+
+const selectCartItems = createSelector(
+	(state) => state.cart,
+	(cart) => cart.cartItems,
+);
