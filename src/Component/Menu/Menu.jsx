@@ -1,13 +1,20 @@
 import React from 'react';
-import { sections } from '../../10.1 directory.data.js.js';
+
 import { MenuItem } from '../MenuItem/MenuItem';
+import { useSelector } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
 import './Menu.styles.scss';
+const selectHomeData = createSelector(
+	(state) => state.home,
+	(home) => home,
+);
+
 export const Menu = () => {
-	const menus = sections;
+	const data = useSelector((state) => selectHomeData(state));
 
 	return (
 		<div className='menu'>
-			{menus.map(({ title, id, imageUrl, size, linkUrl }) => (
+			{data.map(({ title, id, imageUrl, size, linkUrl }) => (
 				<MenuItem
 					key={id}
 					title={title}

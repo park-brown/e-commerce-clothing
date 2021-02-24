@@ -1,9 +1,14 @@
 import React from 'react';
-import SHOP_DATA from './ShopData';
+import { useSelector } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
 import { CardContainer } from '../CardContainer/CardContainer';
 import './shopPage.styles.scss';
+const selectShop = createSelector(
+	(state) => state.shop,
+	(shop) => shop,
+);
 export const ShopPage = () => {
-	const shopData = SHOP_DATA;
+	const shopData = useSelector((state) => selectShop(state));
 	const renderShopPage = () =>
 		shopData.map(({ id, ...other }) => (
 			<CardContainer key={id} {...other}></CardContainer>
