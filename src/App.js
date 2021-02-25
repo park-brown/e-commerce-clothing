@@ -6,11 +6,7 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import { HomePage } from './Component/HomePage/HomePage';
-import { HatPage } from './Component/HatPage/HatPage';
-import { JacketPage } from './Component/JacketPage/JacketPage';
-import { MenPage } from './Component/MenPage/MenPage';
-import { SneakerPage } from './Component/SneakerPage/SneakerPage';
-import { WomenPage } from './Component/WomenPage/WomenPage';
+import { Category } from './Component/CategoryPage/Category';
 import { ShopPage } from './Component/ShopPage/ShopPage';
 import { Header } from './Component/Header/Header';
 import { Container } from './Component/SignIn-and-SignUp-Page/Container';
@@ -24,7 +20,7 @@ function App() {
 
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
-			if (user) {
+			if ((user.length = 0)) {
 				const userRef = await createUserProfileDocument(user);
 
 				userRef.onSnapshot((snapshot) => {
@@ -36,7 +32,7 @@ function App() {
 					);
 				});
 			} else {
-				// dispatch(userAdded(user));
+				return;
 			}
 		});
 	}, [dispatch]);
@@ -45,11 +41,7 @@ function App() {
 		<Router>
 			<Header />
 			<Switch>
-				<Route exact path='/shop/hat' component={HatPage} />
-				<Route exact path='/shop/jacket' component={JacketPage} />
-				<Route exact path='/shop/men' component={MenPage} />
-				<Route exact path='/shop/sneaker' component={SneakerPage} />
-				<Route exact path='/shop/women' component={WomenPage} />
+				<Route exact path='/shop/:category' component={Category} />
 				<Route exact path='/shop' component={ShopPage} />
 				<Route exact path='/checkout' component={CheckOut} />
 				<Route
