@@ -8,12 +8,15 @@
 	}
 
 	.items {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		grid-gap: 10px;
+		display: flex;
+		margin: auto;
+
+		padding-left: 2.2%;
 
 		& .collection-item {
 			margin-bottom: 30px;
+			width: 85%;
+			margin: auto;
 		}
 	}
 }

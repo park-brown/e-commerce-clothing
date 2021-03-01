@@ -5,7 +5,9 @@ export const userSlice = createSlice({
 	initialState: [],
 	reducers: {
 		userSignIn: (state, action) => {
-			state.push(action.payload);
+			if (state.length === 0) {
+				state.push(action.payload);
+			}
 		},
 		userSignOut: (state, action) => {
 			state.splice(0, 1);

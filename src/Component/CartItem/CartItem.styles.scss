@@ -11,13 +11,19 @@
 	.item-details {
 		width: 70%;
 		display: flex;
+		flex-grow: 1;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;
 		padding: 10px 20px;
 
 		.name {
-			font-size: 16px;
+			font-size: 12px;
+			color: black;
+			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+		}
+		.price {
+			color: black;
 		}
 	}
 }

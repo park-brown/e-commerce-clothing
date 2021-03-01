@@ -56,7 +56,16 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 	return userRef;
 };
-
+export const addCollectionsAndDocs = async (collectionKey, objectsToAdd) => {
+	const collectionRef = fireStore.collection(collectionKey);
+	const batch = fireStore.batch();
+	objectsToAdd.forEach((obj) => {
+		//let firestore set an unique ID for each of our shop data array//
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, obj);
+	});
+	return await batch.commit();
+};
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();

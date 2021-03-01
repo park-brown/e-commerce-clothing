@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Grid from '@material-ui/core/Grid';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
@@ -13,16 +13,15 @@ export const Menu = () => {
 	const data = useSelector((state) => selectHomeData(state));
 
 	return (
-		<div className='menu'>
-			{data.map(({ title, id, imageUrl, size, linkUrl }) => (
+		<Grid className='menu' container>
+			{data.map(({ title, id, imageUrl, linkUrl }) => (
 				<MenuItem
 					key={id}
 					title={title}
 					imageUrl={imageUrl}
-					size={size}
 					linkUrl={linkUrl}
 				/>
 			))}
-		</div>
+		</Grid>
 	);
 };

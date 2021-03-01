@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { CssBaseline } from '@material-ui/core';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -14,13 +15,18 @@ import { CheckOut } from './Component/CheckOut/CheckOut';
 import { auth, createUserProfileDocument } from './fireBase/fireBase.util.js';
 import { userSignIn } from './features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+
 function App() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
 
+	// const shopdata = useSelector((state) => state.shop);
+
+	// const data = shopdata.map(({ title, items }) => ({ title, items }));
+
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
-			if ((user.length = 0)) {
+			if (user) {
 				const userRef = await createUserProfileDocument(user);
 
 				userRef.onSnapshot((snapshot) => {
@@ -30,6 +36,7 @@ function App() {
 							...snapshot.data(),
 						}),
 					);
+					// addCollectionsAndDocs('collections', data);
 				});
 			} else {
 				return;
@@ -38,22 +45,25 @@ function App() {
 	}, [dispatch]);
 
 	return (
-		<Router>
-			<Header />
-			<Switch>
-				<Route exact path='/shop/:category' component={Category} />
-				<Route exact path='/shop' component={ShopPage} />
-				<Route exact path='/checkout' component={CheckOut} />
-				<Route
-					exact
-					path='/signIn'
-					render={() =>
-						user.length === 0 ? <Container /> : <Redirect to='/' />
-					}
-				/>
-				<Route exact path='/' component={HomePage} />
-			</Switch>
-		</Router>
+		<React.Fragment>
+			<CssBaseline />
+			<Router>
+				<Header />
+				<Switch>
+					<Route exact path='/shop/:category' component={Category} />
+					<Route exact path='/shop' component={ShopPage} />
+					<Route exact path='/checkout' component={CheckOut} />
+					<Route
+						exact
+						path='/signIn'
+						render={() =>
+							user.length === 0 ? <Container /> : <Redirect to='/' />
+						}
+					/>
+					<Route exact path='/' component={HomePage} />
+				</Switch>
+			</Router>
+		</React.Fragment>
 	);
 }
 

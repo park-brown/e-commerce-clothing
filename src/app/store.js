@@ -25,11 +25,15 @@ export default configureStore({
 	middleware: getDefaultMiddleware({
 		serializableCheck: {
 			// Ignore these action types
-			ignoredActions: ['userSignIn'],
+			ignoredActions: [
+				'user/userSignIn',
+				'persist/REHYDRATE',
+				'persist/PERSIST',
+			],
 			// Ignore these field paths in all actions
 			ignoredActionPaths: ['meta.arg', 'payload.createdAt'],
 			// Ignore these paths in the state
-			ignoredPaths: ['user.0.createdAt'],
+			ignoredPaths: ['state._persist'],
 		},
 	}),
 });
