@@ -3,20 +3,19 @@
 	flex-direction: column;
 
 	.title {
-		font-size: 38px;
-		margin: 0 auto 30px;
+		font-size: 2rem;
+		margin: auto;
+		text-align: center;
 	}
 
 	.items {
 		display: flex;
-		margin: auto;
-
-		padding-left: 2.2%;
+		padding-left: 5rem;
 
 		& .collection-item {
 			margin-bottom: 30px;
-			width: 85%;
-			margin: auto;
+			width: 60%;
+			margin: 2rem;
 		}
 	}
 }

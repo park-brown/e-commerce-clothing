@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Card } from '../Card/Card';
 import '../CategoryPage/Category.styles.scss';
 import Grid from '@material-ui/core/Grid';
+
 export const Category = ({ match: { params } }) => {
 	const param = params.category;
 	const shopdata = useSelector((state) => state.shop);
@@ -12,7 +13,7 @@ export const Category = ({ match: { params } }) => {
 	return (
 		<div className='collection-page'>
 			<h2 className='title'>{categorydata.title}</h2>
-			<Grid container className='items'>
+			<Grid container className='items' spacing={2}>
 				{categorydata.items.map((item) => (
 					<Card key={item.id} item={item}></Card>
 				))}

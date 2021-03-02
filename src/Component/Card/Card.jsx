@@ -4,6 +4,7 @@ import { addItem } from '../../features/cartSlice';
 import { useDispatch } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
 import './Card.styles.scss';
 
 export const Card = ({ item }) => {
@@ -11,7 +12,7 @@ export const Card = ({ item }) => {
 	const { imageUrl, name, price } = item;
 
 	return (
-		<Grid item xs={12} md={4}>
+		<Grid item xs={12} md={4} sm={6}>
 			<Paper className='collection-item' elevation={6} variant='outlined'>
 				<div
 					className='image'
