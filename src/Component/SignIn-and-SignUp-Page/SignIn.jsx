@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from './FormInput';
 import { CustomButton } from './CustomButton';
-
+import { useStyles } from './siginIn.styles';
 import './signIn.styles.scss';
 import { signInWithGoogle, auth } from '../../fireBase/fireBase.util';
 export const SignIn = () => {
@@ -23,10 +23,11 @@ export const SignIn = () => {
 	const handlePasswordChange = (e) => {
 		setPassword(e.target.value);
 	};
+	const classes = useStyles();
 
 	return (
-		<div className='sign-in'>
-			<h2>I already have an account</h2>
+		<div className={classes.signIn}>
+			<h2 className={classes.h2}>already have an account ?</h2>
 			<span>sign in with your email and password</span>
 			<form onSubmit={handleSubmit}>
 				<FormInput
@@ -45,10 +46,10 @@ export const SignIn = () => {
 					handleChange={handlePasswordChange}
 					required
 				/>
-				<div className='button-group'>
+				<div className={classes.buttonGroup}>
 					<CustomButton type='submit'>Sign In</CustomButton>
 					<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-						Sign In With Google
+						Google sign in
 					</CustomButton>
 				</div>
 			</form>

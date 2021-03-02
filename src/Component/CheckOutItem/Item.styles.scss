@@ -6,6 +6,14 @@
 	padding: 15px 0;
 	font-size: 20px;
 	align-items: center;
+	@media only screen and (max-width: 600px) {
+		.image-container {
+			height: 40px;
+		}
+		.name {
+			display: none;
+		}
+	}
 
 	.image-container {
 		width: 23%;
@@ -21,9 +29,19 @@
 	.price {
 		width: 23%;
 	}
+	.price {
+		@media only screen and (max-width: 600px) {
+			margin-left: 40px;
+		}
+	}
 
 	.quantity {
 		display: flex;
+		@media only screen and (max-width: 600px) {
+			.arrow:first-child {
+				margin-left: 18px;
+			}
+		}
 		.arrow {
 			cursor: pointer;
 		}

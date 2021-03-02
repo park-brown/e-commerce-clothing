@@ -35,7 +35,8 @@
 		height: 8%;
 		display: flex;
 		justify-content: space-around;
-		font-size: 18px;
+		font-size: 12px;
+		font-weight: 600;
 
 		.name {
 			width: 90%;
@@ -45,6 +46,7 @@
 
 		.price {
 			width: 10%;
+			margin-right: 10px;
 		}
 	}
 }

@@ -6,7 +6,6 @@ import {
 } from '../../features/cartSlice';
 import { useDispatch } from 'react-redux';
 import '../CheckOutItem/Item.styles.scss';
-
 export const CheckOutItem = (cartItem) => {
 	const {
 		cartItem: { imageUrl, name, price, quantity },

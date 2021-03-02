@@ -13,9 +13,17 @@
 		justify-content: space-between;
 		border-bottom: 1px solid darkgrey;
 
-		.header-block {
+		.checkout-block {
 			text-transform: capitalize;
 			width: 23%;
+			@media only screen and (max-width: 600px) {
+				span {
+					width: 40%;
+
+					margin-right: 4px;
+					font-size: 4px;
+				}
+			}
 
 			&:last-child {
 				width: 8%;
